@@ -1,0 +1,150 @@
+
+
+" Vundle start
+
+" Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+filetype off
+
+" Hack to disable syntastic Java syntax checking
+let g:loaded_syntastic_java_javac_checker = 1
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vimwiki/vimwiki'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rust-lang/rust.vim'
+
+call vundle#end()
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype plugin indent on
+
+" Vundle end
+
+set guifont=Monospace\ 11
+
+" Enable syntax highlighting
+syntax on
+" colorscheme Tomorrow-Night
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set encoding=utf-8
+
+" Au moins 3 lignes visibles autour du curseur
+set scrolloff=3
+
+set autoindent
+set showmode
+set showcmd
+set hidden
+
+" Better command-line completion
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+set relativenumber
+set undofile
+
+
+let mapleader=","
+
+
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
+
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Disable use of the mouse for all modes
+set mouse=
+
+
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+
+
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" Use <F11> to toggle between 'paste' and 'nopaste'
+set pastetoggle=<F11>
+
+
+"------------------------------------------------------------
+" Mappings {{{1
+"
+" Useful mappings
+
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
+
+
+map <leader>n :NERDTreeToggle<CR>
+
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd='CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+
+set statusline=                              " clear the statusline for when vimrc is reloaded
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%=                           " right align
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=U+%04B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+
+
+let g:ycm_rust_src_path = '/home/nico/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+nnoremap <Leader>] :YcmCompleter GoTo<CR>
+

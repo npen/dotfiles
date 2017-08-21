@@ -8,7 +8,7 @@ check:
 	@echo "- Use make update to update all config files in git repository"
 	@echo "###############################################################################"
 
-install: $(HOME)/.tmux.conf
+install: $(HOME)/.tmux.conf $(HOME)/.gitconfig $(HOME)/.bashrc $(HOME)/.vim/vimrc
 
 $(HOME)/.tmux.conf: .tmux.conf
 	@echo "Updating .tmux.conf in $(HOME)"
@@ -22,7 +22,15 @@ $(HOME)/.bashrc: .bashrc
 	@echo "Updating .bashrc in $(HOME)"
 	cp .bashrc $(HOME)/.bashrc
 
+$(HOME)/.vim/vimrc: .vim/vimrc
+	cp .vim/vimrc $(HOME)/.vim/vimrc
+
+bootstrap:
+	mkdir -p $(HOME)/.vim/bundle
+	git clone https://github.com/VundleVim/Vundle.vim.git $(HOME)/.vim/bundle/Vundle.vim
+
 update:
 	cp $(HOME)/.tmux.conf .tmux.conf
 	cp $(HOME)/.gitconfig .gitconfig
 	cp $(HOME)/.bashrc .bashrc
+	cp $(HOME)/.vim/vimrc .vim/vimrc
