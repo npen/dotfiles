@@ -1,0 +1,10 @@
+[user]
+    name = Nicolas Peninguy
+    email = nico@lostgeeks.org
+[color]
+    ui = auto
+[core]
+    editor = vim
+[push]
+    default = simple
+

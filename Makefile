@@ -14,5 +14,10 @@ $(HOME)/.tmux.conf: .tmux.conf
 	@echo "Updating .tmux.conf in $(HOME)"
 	cp .tmux.conf $(HOME)/.tmux.conf
 
+$(HOME)/.gitconfig: .gitconfig
+	@echo "Updating .gitconfig in $(HOME)"
+	cp .gitconfig $(HOME)/.gitconfig
+
 update:
 	cp $(HOME)/.tmux.conf .tmux.conf
+	cp $(HOME)/.gitconfig .gitconfig
