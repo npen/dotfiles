@@ -8,8 +8,13 @@ fi
 # Default editor vim or vi
 type vi >/dev/null 2>&1 && EDITOR=vi
 type vim >/dev/null 2>&1 && EDITOR=vim
+type vimx >/dev/null 2>&1 && EDITOR=vimx
 
 export EDITOR
+
+if [ "x$EDITOR" == "xvimx" ]; then
+    alias vim=vimx
+fi
 
 # Aliases
 alias ll='ls -l'
