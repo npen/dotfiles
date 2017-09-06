@@ -14,7 +14,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'YorickPeterse/happy_hacking.vim'
+Plugin 'atelierbram/Base2Tone-vim'
 
 Plugin 'vimwiki/vimwiki'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -36,9 +36,9 @@ set guifont=Monospace\ 11
 
 " Enable syntax highlighting
 syntax on
+colorscheme Base2Tone_ForestDark
 " set termguicolors
 set t_ut=
-colorscheme happy_hacking
 
 set tabstop=4
 set shiftwidth=4
