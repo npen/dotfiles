@@ -14,7 +14,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'atelierbram/Base2Tone-vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'vimwiki/vimwiki'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -36,7 +36,8 @@ set guifont=Monospace\ 11
 
 " Enable syntax highlighting
 syntax on
-colorscheme Base2Tone_ForestDark
+set background=dark
+colorscheme PaperColor
 " set termguicolors
 set t_ut=
 
